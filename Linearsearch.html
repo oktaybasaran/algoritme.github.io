@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoek Getal</title>
+</head>
+<body>
+    <script>
+        // Functie om een array van opgegeven lengte te maken met willekeurige getallen
+        function createArray(length) {
+            return Array.from({length}, () => Math.floor(Math.random() * 100));
+        }
+
+        // Hoofdfunctionaliteit van het programma
+        function main() {
+            var zoekGetal, i;
+            // Genereer een array met 10 willekeurige getallen
+            var getallenRij = createArray(10);
+
+            // Initialiseer een for-lus om elk element in de array opnieuw te genereren
+            for (i = 0; i <= 9; i++) {
+                getallenRij[i] = Math.floor(Math.random() * 100);
+            }
+
+            // Vraag de gebruiker om het getal dat ze willen zoeken
+            alert("Welk getal wil je zoeken:");
+            zoekGetal = Number(prompt('Voer een waarde in voor zoekGetal'));
+
+            // Initialiseer een while-lus om het getal te zoeken in de array
+            i = 0;
+            while (getallenRij[i] !== zoekGetal && i < 9) {
+                i = i + 1;
+            }
+
+            // Controleer of het getal is gevonden en toon het resultaat aan de gebruiker
+            if (getallenRij[9] === zoekGetal) {
+                alert(zoekGetal + " staat op plek " + i);
+            }
+
+            // Als het getal niet op de laatste positie staat, toon het resultaat
+            if (i === 9) {
+                alert("Getal niet gevonden.");
+            } else {
+                alert(zoekGetal + " staat op plek " + i);
+            }
+        }
+
+        // Roep de hoofdfunctie aan wanneer de pagina laadt
+        main(); 
+    </script>
+</body>
+</html>

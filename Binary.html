@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search Programma</title>
+    <script>
+        // Functie om een array van opgegeven grootte te maken en willekeurige getallen toe te wijzen.
+        function createArray(size) {
+            var array = [];
+            for (var i = 0; i < size; i++) {
+                array.push(Math.floor(Math.random() * 99)); // Willekeurig getal tussen 0 en 99.
+            }
+            return array;
+        }
+
+        // Functie om het binair zoekalgoritme uit te voeren.
+        function binarySearch() {
+            var reeks = createArray(50); // Array aanmaken en vullen met willekeurige getallen.
+
+            // Array sorteren (bubble sort).
+            for (var i = 0; i < reeks.length - 1; i++) {
+                for (var j = 0; j < reeks.length - 1 - i; j++) {
+                    if (reeks[j] > reeks[j + 1]) {
+                        var temp = reeks[j];
+                        reeks[j] = reeks[j + 1];
+                        reeks[j + 1] = temp;
+                    }
+                }
+            }
+
+            var gekozengetal = prompt("Voer een getal in tussen 0 en 100:"); // Gebruiker om invoer vragen.
+
+            var start = 0;
+            var eind = reeks.length - 1;
+            var gevonden = false;
+
+            // Binair zoekalgoritme.
+            while (start <= eind) {
+                var midden = Math.floor((start + eind) / 2);
+                if (parseInt(gekozengetal) === reeks[midden]) {
+                    gevonden = true;
+                    break;
+                } else if (parseInt(gekozengetal) > reeks[midden]) {
+                    start = midden + 1;
+                } else {
+                    eind = midden - 1;
+                }
+            }
+
+            // Resultaat weergeven aan de gebruiker.
+            if (gevonden) {
+                alert("Nummer " + gekozengetal + " werd gevonden op positie " + (midden + 1) + ". Gefeliciteerd!");
+            } else {
+                alert("Nummer " + gekozengetal + " werd niet gevonden. Probeer het opnieuw.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Binair Zoekprogramma</h1>
+    <p>Dit programma genereert een willekeurige reeks getallen, sorteert ze en zoekt vervolgens het ingevoerde getal.</p>
+    <button onclick="binarySearch()">Start</button>
+</body>
+</html>

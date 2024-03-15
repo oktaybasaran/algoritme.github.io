@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteer Getallen</title>
+</head>
+<body>
+    <h1>Sorteer Getallen</h1>
+    <ul>
+        <li><a href="bubblesort.html">Bubblesort</a></li>
+        <li><a href="binarysearch.html">Binary Search</a></li>
+        <li><a href="linearsearch.html">Linear Search</a></li>
+    </ul>
+
+    <script>
+        function createArray(length) {
+            return Array.from({length}, () => Math.floor(Math.random() * 100));
+        }
+
+        function sortNumbersAscending(numbers) {
+            return numbers.slice().sort((a, b) => a - b);
+        }
+
+        function sortNumbersDescending(numbers) {
+            return numbers.slice().sort((a, b) => b - a);
+        }
+
+        function main() {
+            alert("Hallo mijn beste gebruiker! In dit programma kunt u kiezen uit een bepaald aantal getallen en deze worden voor u in de juiste volgorde van klein naar groot of van groot naar klein gesorteerd.");
+
+            var aantal = Number(prompt('Hoeveel getallen wilt u aanvragen?'));
+            var getallenRij = createArray(aantal);
+
+            var keuze = Number(prompt('Kies het getal 1 als u de getallen van klein naar groot wilt sorteren en kies een ander willekeurig getal als u het van groot naar klein wilt sorteren.'));
+
+            if (keuze === 1) {
+                getallenRij = sortNumbersAscending(getallenRij);
+            } else {
+                getallenRij = sortNumbersDescending(getallenRij);
+            }
+
+            alert("De gesorteerde getallen zijn: " + getallenRij.join(", "));
+            alert("Gefeliciteerd! De getallen die u heeft gekozen zitten nu in de juiste volgorde.");
+            alert("Dankjewel voor het gebruiken van mijn programma.");
+        }
+
+        main(); // Call the main function when the page loads
+    </script>
+</body>
+</html>
